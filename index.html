@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocab Test</title>
+<link rel="stylesheet" href="css/tokens.css">
+<style>body{background:var(--bg)}</style>
+</head>
+<body>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  if (Auth.isLoggedIn()) {
+    window.location.replace(Auth.isAdmin() ? 'admin/dashboard.html' : 'lessons.html');
+  } else {
+    window.location.replace('login.html');
+  }
+</script>
+</body>
+</html>

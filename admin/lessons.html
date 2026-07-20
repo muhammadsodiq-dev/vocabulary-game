@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lessons — Vocab Test Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+  <div class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="menu-toggle" id="menuToggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div><h1 data-i18n="admin_lessons_title"></h1></div>
+      </div>
+      <div class="topbar-actions"><div id="userMenuSlot"></div></div>
+    </header>
+
+    <div class="content">
+      <div class="card">
+        <div class="card-header">
+          <h3 data-i18n="all_lessons_card"></h3>
+          <button class="btn btn-primary btn-sm" id="addLessonBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span data-i18n="btn_add_lesson"></span></button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th data-i18n="col_id"></th><th data-i18n="col_lesson_name"></th><th data-i18n="col_date"></th><th data-i18n="col_words"></th><th data-i18n="col_actions"></th></tr></thead>
+            <tbody id="tblBody"><tr><td colspan="5"><div class="skeleton" style="height:20px"></div></td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination-bar" id="pager"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-scrim" id="lessonModal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="modalTitle" data-i18n="modal_add_lesson"></h3><button class="btn-icon" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <form id="lessonForm">
+      <div class="modal-body">
+        <input type="hidden" id="lessonId">
+        <div class="field"><label for="lessonName" data-i18n="label_lesson_name"></label><input class="input" id="lessonName" required></div>
+        <div class="field"><label for="lessonDate" data-i18n="label_lesson_date"></label><input class="input" type="date" id="lessonDate" required></div>
+        <div class="field"><label for="lessonDesc" data-i18n="label_description"></label><textarea class="textarea" id="lessonDesc"></textarea></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close-modal data-i18n="btn_cancel"></button>
+        <button type="submit" class="btn btn-primary" id="saveLessonBtn" data-i18n="btn_save_lesson"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/data-table.js"></script>
+<script src="../js/admin/lessons.js"></script>
+</body>
+</html>

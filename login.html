@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Vocab Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<div class="auth-page">
+  <div style="position:absolute;top:20px;right:20px;z-index:2" id="langSlot"></div>
+  <div class="auth-brand">
+    <div class="auth-brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div><strong>Vocab Test</strong><span data-i18n="brand_tagline"></span></div>
+  </div>
+
+  <div class="auth-card">
+    <div class="auth-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+    <h1 data-i18n="login_title"></h1>
+    <p class="auth-sub" data-i18n="login_subtitle"></p>
+
+    <form id="loginForm" novalidate>
+      <div class="field" id="f-email">
+        <label for="email" data-i18n="label_email"></label>
+        <input class="input" type="email" id="email" placeholder="john.doe@example.com" autocomplete="email" required>
+        <div class="field-error">Enter a valid email address.</div>
+      </div>
+      <div class="field" id="f-password">
+        <label for="password" data-i18n="label_password"></label>
+        <input class="input" type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+        <div class="field-error">Password is required.</div>
+      </div>
+      <div class="auth-forgot"><a href="forgot-password.html" data-i18n="forgot_password_link"></a></div>
+      <button class="btn btn-primary btn-block" type="submit" id="loginBtn" data-i18n="btn_login"></button>
+    </form>
+
+    <div class="auth-footer"><span data-i18n="no_account"></span> <a class="link" href="register.html" data-i18n="link_register"></a></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
