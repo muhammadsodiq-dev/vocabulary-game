@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Words — Vocab Test Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+  <div class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="menu-toggle" id="menuToggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div><h1 data-i18n="admin_words_title"></h1></div>
+      </div>
+      <div class="topbar-actions"><div id="userMenuSlot"></div></div>
+    </header>
+
+    <div class="content">
+      <div class="card">
+        <div class="table-toolbar">
+          <div class="input-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg><input class="input" id="searchInput" data-i18n-placeholder="search_word_placeholder"></div>
+          <select class="select" id="typeFilter"><option value="" data-i18n="filter_all_types"></option><option>VERB</option><option>NOUN</option><option>ADJECTIVE</option><option>ADVERB</option></select>
+          <select class="select" id="aspectFilter"><option value="" data-i18n="filter_all_aspects"></option><option>PERFECTIVE</option><option>IMPERFECTIVE</option></select>
+          <select class="select" id="levelFilter"><option value="" data-i18n="filter_all_levels"></option><option>A1</option><option>A2</option><option>B1</option><option>B2</option></select>
+          <button class="btn btn-primary btn-sm" id="addWordBtn" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span data-i18n="btn_add_word"></span></button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th data-i18n="col_id"></th><th data-i18n="col_russian_word"></th><th data-i18n="col_uzbek_meaning"></th><th data-i18n="col_type"></th><th data-i18n="col_aspect"></th><th data-i18n="col_level"></th><th data-i18n="col_lesson"></th><th data-i18n="col_actions"></th></tr></thead>
+            <tbody id="tblBody"><tr><td colspan="8"><div class="skeleton" style="height:20px"></div></td></tr></tbody>
+          </table>
+        </div>
+        <div class="pagination-bar" id="pager"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-scrim" id="wordModal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="modalTitle" data-i18n="modal_add_word"></h3><button class="btn-icon" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <form id="wordForm">
+      <div class="modal-body">
+        <input type="hidden" id="wordId">
+        <div class="field-row">
+          <div class="field"><label for="russianWord" data-i18n="label_russian_word"></label><input class="input" id="russianWord" required></div>
+          <div class="field"><label for="uzbekMeaning" data-i18n="label_uzbek_meaning"></label><input class="input" id="uzbekMeaning" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="wordType" data-i18n="label_word_type"></label>
+            <select class="select" id="wordType"><option>VERB</option><option>NOUN</option><option>ADJECTIVE</option><option>ADVERB</option></select>
+          </div>
+          <div class="field"><label for="wordAspect" data-i18n="label_aspect"></label>
+            <select class="select" id="wordAspect"><option>PERFECTIVE</option><option>IMPERFECTIVE</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="exampleSentence" data-i18n="label_example_sentence"></label><input class="input" id="exampleSentence"></div>
+        <div class="field-row">
+          <div class="field"><label for="wordLevel" data-i18n="label_word_level"></label>
+            <select class="select" id="wordLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option></select>
+          </div>
+          <div class="field"><label for="wordLesson" data-i18n="label_lesson"></label><select class="select" id="wordLesson"></select></div>
+        </div>
+        <div class="field"><label for="exampleMeaning" data-i18n="label_example_meaning"></label><input class="input" id="exampleMeaning"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close-modal data-i18n="btn_cancel"></button>
+        <button type="submit" class="btn btn-primary" id="saveWordBtn" data-i18n="btn_save_word"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/data-table.js"></script>
+<script src="../js/admin/vocabulary-words.js"></script>
+</body>
+</html>

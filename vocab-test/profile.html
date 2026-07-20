@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — Vocab Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+  <div class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="menu-toggle" id="menuToggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div><h1 data-i18n="profile_title"></h1></div>
+      </div>
+      <div class="topbar-actions"><div id="userMenuSlot"></div></div>
+    </header>
+
+    <div class="content">
+      <div class="card detail-card card-pad" style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+        <div class="avatar" id="bigAvatar" style="width:64px;height:64px;font-size:22px">?</div>
+        <div>
+          <h2 id="profileName" style="font-size:18px">—</h2>
+          <p class="text-muted" id="profileEmail" style="font-size:13.5px">—</p>
+        </div>
+      </div>
+
+      <div class="card detail-card" style="margin-bottom:20px">
+        <div class="card-header"><h3 data-i18n="personal_info"></h3></div>
+        <div class="card-body">
+          <form id="profileForm">
+            <div class="field-row">
+              <div class="field"><label for="firstName" data-i18n="label_first_name"></label><input class="input" id="firstName" type="text"></div>
+              <div class="field"><label for="lastName" data-i18n="label_last_name"></label><input class="input" id="lastName" type="text"></div>
+            </div>
+            <div class="field"><label for="email" data-i18n="label_email"></label><input class="input" id="email" type="email"></div>
+            <button class="btn btn-primary" type="submit" id="saveProfileBtn" data-i18n="btn_save_changes"></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card detail-card">
+        <div class="card-header"><h3 data-i18n="password_section"></h3></div>
+        <div class="card-body">
+          <p class="text-muted" style="margin-bottom:16px;font-size:13.5px" data-i18n="password_hint"></p>
+          <a class="btn btn-outline" href="forgot-password.html" data-i18n="btn_reset_password"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
