@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test — Vocab Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+
+<div class="test-page">
+  <div style="position:absolute;top:20px;right:20px;z-index:2" id="langSlot"></div>
+  <div class="test-shell">
+    <a class="test-exit" href="lessons.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg><span data-i18n="exit_test"></span></a>
+
+    <!-- Stage: Get Ready -->
+    <section id="stage-ready" class="test-card">
+      <span class="stage-badge" id="readyType">TRANSLATION</span>
+      <div class="test-illustration">
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="92" fill="var(--primary-light)"/>
+          <g transform="translate(100 100) rotate(-18)">
+            <path d="M0 -58c16 0 28 22 28 46 0 14-4 26-10 34H-18c-6-8-10-20-10-34 0-24 12-46 28-46z" fill="var(--primary)"/>
+            <circle cx="0" cy="-30" r="10" fill="#fff"/>
+            <path d="M-28 20l-16 30 24-6z" fill="#7C5CFF"/>
+            <path d="M28 20l16 30-24-6z" fill="#7C5CFF"/>
+            <path d="M-10 22h20l-6 34a4 4 0 0 1-8 0z" fill="var(--warning)"/>
+          </g>
+        </svg>
+      </div>
+      <h2 id="readySubtitle">Translate Russian words to Uzbek</h2>
+      <p class="test-desc" data-i18n="choose_translation"></p>
+      <div class="test-meta-row">
+        <div class="test-meta"><strong id="readyCount">10</strong><span data-i18n="test_questions_label"></span></div>
+      </div>
+      <button class="btn btn-primary btn-block" id="startBtn" data-i18n="test_start"></button>
+    </section>
+
+    <!-- Stage: Countdown -->
+    <section id="stage-countdown" class="test-card hidden">
+      <h2 data-i18n="get_ready"></h2>
+      <p class="test-desc" data-i18n="will_start_in"></p>
+      <div class="countdown-wrap">
+        <div class="countdown-number" id="countdownNumber">3</div>
+        <div class="countdown-dots">
+          <span data-dot="3" class="active"></span>
+          <span data-dot="2"></span>
+          <span data-dot="1"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage: Question -->
+    <section id="stage-question" class="hidden">
+      <div class="progress-label"><span id="qProgressLabel">1 / 10</span><span id="qScoreLabel"></span></div>
+      <div class="progress-track"><div class="progress-fill" id="qProgressFill" style="width:10%"></div></div>
+      <div class="question-card" style="margin-top:18px">
+        <div class="q-instruction" data-i18n="choose_translation"></div>
+        <div class="q-word-box">
+          <span class="q-word"><span id="qWord">читать</span><button class="q-word-play" id="qSpeak" type="button" aria-label="Play pronunciation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg></button></span>
+        </div>
+        <div class="option-list" id="optionList"></div>
+        <div class="q-actions">
+          <button class="btn btn-outline" id="skipBtn" type="button" data-i18n="btn_skip"></button>
+          <button class="btn btn-primary" id="nextBtn" type="button" disabled data-i18n="btn_next"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stage: Feedback -->
+    <section id="stage-feedback" class="hidden">
+      <div class="progress-label"><span id="fProgressLabel">1 / 10</span><span></span></div>
+      <div class="progress-track"><div class="progress-fill" id="fProgressFill" style="width:10%"></div></div>
+      <div class="test-card" style="margin-top:18px">
+        <div class="feedback-icon" id="feedbackIcon"></div>
+        <h2 class="feedback-title" id="feedbackTitle">Correct!</h2>
+        <p class="feedback-detail" id="feedbackDetail"></p>
+        <button class="btn btn-primary btn-block" id="feedbackNextBtn" data-i18n="btn_next"></button>
+      </div>
+    </section>
+
+    <!-- Stage: Completed -->
+    <section id="stage-completed" class="test-card hidden">
+      <div class="trophy-wrap">
+        <svg viewBox="0 0 200 160" fill="none">
+          <path d="M60 20h80v34c0 22-18 40-40 40s-40-18-40-40V20z" fill="var(--warning)"/>
+          <path d="M60 28H36a16 16 0 0 0 16 26M140 28h24a16 16 0 0 1-16 26" stroke="var(--warning)" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <rect x="92" y="92" width="16" height="24" fill="var(--warning)"/>
+          <rect x="72" y="116" width="56" height="14" rx="4" fill="#B9700A"/>
+          <circle cx="100" cy="46" r="16" fill="#FFE3A3"/>
+        </svg>
+      </div>
+      <h2 data-i18n="great_job"></h2>
+      <p class="test-desc" data-i18n="test_completed_text"></p>
+      <button class="btn btn-primary btn-block" id="viewResultBtn" data-i18n="btn_view_result"></button>
+    </section>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/test.js"></script>
+</body>
+</html>
