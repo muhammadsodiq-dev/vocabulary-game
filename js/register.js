@@ -22,6 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     UI.setLoading(btn, true, 'Creating account…');
     try {
+      console.log({
+  firstName,
+  lastName,
+  email,
+  password
+});
+      console.log(document.getElementById("email").value); 
+      
       const payload = { firstName, lastName, email, password };
       console.log('Register so\'rovi:', payload);
       const res = await api.post(CONFIG.ENDPOINTS.register, payload, { noAuth: true });
